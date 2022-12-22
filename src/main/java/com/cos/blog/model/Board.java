@@ -1,6 +1,6 @@
 package com.cos.blog.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import lombok.AllArgsConstructor;
@@ -39,7 +40,6 @@ public class Board {
 	@Lob
 	private String content;
 	
-	@ColumnDefault("0")
 	private int count;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -49,6 +49,6 @@ public class Board {
 	@OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
 	private List<Reply> reply;
 	
-	@CreatedDate
+	@CreationTimestamp
 	private Timestamp createDate;
 }

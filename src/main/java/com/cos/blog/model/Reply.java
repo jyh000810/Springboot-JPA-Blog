@@ -1,7 +1,6 @@
 package com.cos.blog.model;
 
-import java.security.Timestamp;
-
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import lombok.AllArgsConstructor;
@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 public class Reply {
 
 	@Id
-	@GeneratedValue( strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(nullable = false, length = 200)
@@ -39,6 +39,6 @@ public class Reply {
 	@JoinColumn(name="userId")
 	private User user;
 	
-	@CreatedDate
+	@CreationTimestamp
 	private Timestamp createDate;
 }
